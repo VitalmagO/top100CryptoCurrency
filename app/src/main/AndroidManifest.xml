@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Top100CryptoCurrency">
         <activity
+            android:name=".activities.AboutActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
