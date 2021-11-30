@@ -1,4 +1,4 @@
-package com.example.top100cryptocurrency
+package com.example.top100cryptocurrency.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.example.top100cryptocurrency.activities.AboutActivity
+import com.example.top100cryptocurrency.R
+import com.example.top100cryptocurrency.fragments.CryptoCurrencyListFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
@@ -20,10 +21,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var adRequest = AdRequest.Builder().build()
         //Добавление межстраничного баннера при выходе из приложения
         //MyBanner "ca-app-pub-9872688596127707/1448932633"
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        var adRequest = AdRequest.Builder().build()
+        loadInterstitialAd(adRequest)
+        //Вызов фрагмента
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container, CryptoCurrencyListFragment(), null)
+                .commit()
+        }
+    }
+
+    private fun loadInterstitialAd(adReq: AdRequest) {
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adReq, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 Log.d(TAG, adError?.message)
                 mInterstitialAd = null
