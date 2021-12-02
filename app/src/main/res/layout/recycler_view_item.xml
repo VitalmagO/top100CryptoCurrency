@@ -13,7 +13,8 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/bitcoin" />
+        tools:src="@drawable/bitcoin"
+        />
 
     <TextView
         android:id="@+id/tvCurrencySym"
