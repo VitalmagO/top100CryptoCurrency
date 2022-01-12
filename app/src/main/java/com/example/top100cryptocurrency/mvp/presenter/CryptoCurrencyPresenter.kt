@@ -66,7 +66,7 @@ class CryptoCurrencyPresenter : CryptoCurrencyContract.Presenter() {
 
             /*подписывает Observer на Observable
             * принимает объект CoinGeckoApi, получающий данные от сервера вызовом функции getCoinMarket(),
-            * которая возврящяет Observable<List<COinGecko>>*/
+            * которая возврящяет Observable<List<CoinGecko>>*/
             .subscribe({
                 view.hideProgress()
                 view.notifyAdapter()

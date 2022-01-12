@@ -1,16 +1,18 @@
-package com.example.top100cryptocurrency
+package com.example.top100cryptocurrency.formatters
 
+import com.example.top100cryptocurrency.dateToString
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import java.util.*
 
 //Преобразование даты в строковый формат для Оси Х
-class YearValueFormatter : IAxisValueFormatter {
+class YearValueFormatter : ValueFormatter() {
 
-    override fun getFormattedValue(value: Float, axis: AxisBase?): String {
+    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = value.toLong()
-        return calendar.toFormatted()
+        return return calendar.toFormatted()
     }
 
     fun Calendar.toFormatted(): String {
